@@ -1,0 +1,50 @@
+{
+  "name": "webpack-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:serve": "cross-env NODE_ENV=development BASE_ENV=serve webpack-dev-server -c build/webpack.dev.js",
+    "dev:test": "cross-env NODE_ENV=development BASE_ENV=test webpack-dev-server -c build/webpack.dev.js",
+    "build:prod": "cross-env NODE_ENV=production BASE_ENV=prod webpack -c build/webpack.prod.js",
+    "build:analy": "cross-env NODE_ENV=production BASE_ENV=prod webpack -c build/webpack.analy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/plugin-proposal-decorators": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "core-js": "^3.31.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
+    "postcss-scss": "^4.0.6",
+    "react-refresh": "^0.14.0",
+    "sass-loader": "^13.3.2",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "style-loader": "^3.3.3",
+    "thread-loader": "^4.0.2",
+    "webpack": "^5.87.0",
+    "webpack-bundle-analyzer": "^4.9.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  }
+}
