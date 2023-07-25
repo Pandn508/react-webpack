@@ -1,0 +1,23 @@
+.infinite-list-container {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+
+  .infinite-list-phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  .infinite-list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    text-align: center;
+  }
+  
+}

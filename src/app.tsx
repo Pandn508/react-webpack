@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useState } from "react";
 import '@/app.scss'
 import Class from "./components/Class";
 import { Demo1, Demo2 } from '@/components'
+import VirtualScroll, { ExampleItem } from '@/components/virtual-scroll/index'
 
 // 使用import语法配合react的Lazy动态引入资源
 const LazyDemo = lazy(() => import('@/components/LazyDemo'))
@@ -30,6 +31,8 @@ function App() {
     setShow(true)
   }
 
+  const testArr = new Array(200).fill(0).map((i, index) => ({value: index, label: `test${index}`}));
+
   return (
     <div>
       <h2 onClick={onClick}>展示</h2>
@@ -43,6 +46,11 @@ function App() {
       )}
       <Demo1 />
       <Class/>
+      <div style={{height: '300px'}}>
+        <VirtualScroll listData={testArr} estimatedItemSize={32}>
+          <ExampleItem />
+        </VirtualScroll>
+      </div>
     </div>
   )
 }
