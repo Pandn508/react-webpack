@@ -36,7 +36,6 @@ export const cloneDeep = function (value, stack = new Map()) {
       result.add(cloneDeep(item, stack))
     })
   }
-  
 
   Object.keys(value).forEach(key => {
     result[key] = cloneDeep(value[key], stack)
@@ -231,9 +230,45 @@ data.pubsub.subscribe('textChanged', function(value) {
   console.log(value)
 })
 
+class Scheduler {
+  constructor(maxCouncurrent) {
+    this.taskList = []
+    this.count = 0;
+    this.maxCount = maxCouncurrent
+  }
 
-
-
+  async add (fn) {
+    if (this.count >= this.maxCount) {
+      return new Promise((resolve) => {
+        this.taskList.push(() => {
+          this.count ++;
+          fn().then(res => {
+            this.count --
+            resolve(res)
+            if (this.taskList.length > 0) {
+              this.taskList.shift()()
+            }
+          })
+        })
+      })
+    } else {
+      this.count ++
+      return fn().then(res => {
+        this.count --
+        if (this.taskList.length > 0) {
+          this.taskList.shift()()
+        }
+        return res
+      })
+    }
+  }
+}
+const scheduler = new Scheduler(2)
+const addTask = (time, order) => {
+  scheduler.add(()=>new Promise(r=>setTimeout(() => {r(order)},time)))
+      .then((res)=>console.log(res, order))
+}
+//log:2 1 3 4 4
 
 
 
