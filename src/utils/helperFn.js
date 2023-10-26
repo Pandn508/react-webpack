@@ -141,7 +141,7 @@ class MyPromise {
 }
 
 function resolvePromise(promise2, x, resolve, reject) {
-  if (promise2 === MyPromise) {
+  if (promise2 === x) {
     return reject(new TypeError('chaining cycle detect from promise'))
   }
 
@@ -270,7 +270,44 @@ const addTask = (time, order) => {
 }
 //log:2 1 3 4 4
 
-
+/* 数组去重 */
+function uniqueArray(arr) {
+  const result = []
+  for (let i = 0; i < arr.length; i++) {
+    const item1 = arr[i]
+    let isFind = false
+    for (let j = 0; j < result.length; j++) {
+      const item2 = result[j]
+      if (equals(item1, item2)) {
+        isFind = true
+        break
+      }
+    }
+    if (!isFind) {
+      result.push(item1)
+    }
+  }
+  return result
+}
+function equals(value1, value2) {
+  if (isPrimitive(value1) || isPrimitive(value2)) {
+    return Object.is(value1, value2)
+  }
+  const entries1 = Object.entries(value1)
+  const entries2 = Object.entries(value2)
+  if (entries1.length !== entries2.length) {
+    return false
+  }
+  for (const [key, value] of entries1) {
+    if (!equals(value, value2[key])) {
+      return false
+    }
+  }
+  return true
+}
+function isPrimitive(value) {
+  return value === null || !['object', 'function'].includes(typeof value)
+}
 
 
 

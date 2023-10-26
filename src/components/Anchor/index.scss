@@ -1,0 +1,9 @@
+.anchor-link {
+  padding: 8px 0;
+  line-height: 12px;
+  color: unset;
+  display: inline-block;
+  &:hover {
+    color: #4c7bff;
+  }
+}

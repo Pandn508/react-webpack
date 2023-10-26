@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ailpha/soul-ui": "^1.1.1-beta.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
